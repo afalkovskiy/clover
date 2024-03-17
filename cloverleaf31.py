@@ -2,26 +2,23 @@ import streamlit as st
 import numpy as np
 from matplotlib import pyplot as plt
 import math
-col1, col2 = st.columns(2)
-txt = 'Draw n-leaf clover '
 
-with col1:
-    st.subheader(txt)
+txt = 'Draw your n-leaf clover'
+
+st.subheader(txt)
 # st.subheader('Draw n-leaf clover r = (sin(n1 * θ/2) + 0.2 * sin(n2 *4.5*θ/3))²')
 
-with col2:    
-    st.latex(r'''
-            R = (sin(n_1 θ/2) + 0.2 * sin(4.5n_2 θ/3))^2
-                ''')
-
-
+col1, col2 = st.columns(2)
 with col1:
-    n1 = st.slider("Number of petals1", min_value=1, max_value=12, value=1,  step=1)
+    n1 = st.slider("n1", min_value=1, max_value=12, value=3,  step=1)
 with col2:    
-    n2 = st.slider("Number of petals2", min_value=1, max_value=12, value=1,  step=1)
+    n2 = st.slider("n2", min_value=1, max_value=12, value=3,  step=1)
 txt1 = ''    
 if n1==3 and n2==3:
     txt1 = 'Happy St. Patrick\'s Day!'    
+
+if n1==4 and n2==4:
+    txt1 = 'A lucky four-leaf clover!' 
 
 i=200
 pi = np.pi
@@ -56,7 +53,11 @@ ax.plot(theta, r2, color="darkgreen", linewidth=5)
 ax.fill_between(theta, r2, r1, where=r1 >= r2,
                 facecolor='darkgreen', interpolate=True)
 
-
-plt.show()
+# plt.show()
 st.pyplot(fig)
+
+# r(φ) = (sin(\frac{n_1 φ}{2}) + 0.2 * sin(4.5n_2 φ/3))^2   
+st.latex(r'''
+        r(φ) = (sin(\frac{n_1 φ}{2}) + 0.2 * sin(\frac{3 n_2 φ}{2}))^2
+        ''')
 st.subheader(txt1)
