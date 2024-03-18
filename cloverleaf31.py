@@ -61,3 +61,6 @@ st.latex(r'''
         r(φ) = (sin(\frac{n_1 φ}{2}) + 0.2 * sin(\frac{3 n_2 φ}{2}))^2
         ''')
 st.subheader(txt1)
+url1 = "https://www.rmseismic.com/lasviewer.html"
+st.write("More geo apps: [link](%s)" % url1)
+st.write("A.F., Mar 2024")
