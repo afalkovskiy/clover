@@ -4,5 +4,4 @@ math
 pandas
 matplotlib
 scipy
-lasio 
 
