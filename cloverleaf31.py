@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 from matplotlib import pyplot as plt
-import math
+# import math
 
 txt = 'Draw your n-leaf clover'
 
@@ -64,3 +64,4 @@ st.subheader(txt1)
 url1 = "https://www.rmseismic.com/lasviewer.html"
 st.write("More geo apps: [link](%s)" % url1)
 st.write("A.F., Mar 2024")
+
