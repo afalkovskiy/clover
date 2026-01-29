@@ -1,8 +1,8 @@
+streamlit
 numpy
 pandas
 Pillow
 matplotlib
 scipy
-streamlit
 lasio 
 plotly.express
