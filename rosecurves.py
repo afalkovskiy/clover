@@ -40,8 +40,9 @@ r3 = 0.06 * r**2
 
 fig = plt.figure()
 # fig.set_facecolor('darkkhaki')
-fig.set_facecolor('olivedrab')
+# fig.set_facecolor('olivedrab')
 # fig.set_facecolor('darkgreen')
+fig.set_facecolor('skyblue')
 ax = fig.add_subplot(polar=True)
 ax.axis('off')
 
