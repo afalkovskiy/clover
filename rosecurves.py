@@ -8,14 +8,14 @@ txt = 'Math of rose curves'
 st.subheader(txt)
 # st.subheader('Draw n-leaf clover: r = [sin(n1 * θ/2) + 0.2 * sin(n2 * 4.5*θ/3)]²')
 st.latex(r'''
-        r(φ) = cos(\frac{p}{q} φ)
+        r(φ) = cos(p φ)
         ''')
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    p = st.slider("p", min_value=1., max_value=24., value=3.,  step=1.)
+    p = st.slider("p1 outer curve", min_value=1., max_value=24., value=3.,  step=1.)
 with col2:    
-    q = st.slider("q", min_value=1, max_value=24, value=1,  step=1)
+    q = st.slider("p2 inner curve", min_value=3, max_value=24, value=6,  step=1)
 with col3:
     r = st.slider("rnd", min_value=0., max_value=.5, value=0.05,  step=0.05)    
 txt1 = ''    
@@ -30,19 +30,21 @@ theta = np.linspace(0, 2 * np.pi, 2000)
 rnd = r*np.random.rand(theta.size)
 
 
-r = abs(np.cos((p/q)*theta)) + rnd
+r = abs(np.cos(p*theta)) + rnd
+
+r2 = abs(np.cos(q*theta)) + rnd
 # r = np.linspace(2, 2, 2000)
 
 
 r1 = 0.7 * r**2 
-r2 = 0.4 * r 
-r3 = 0.06 * r**2
+r2 = 0.4 * r2 
+r3 = 0.1 * r2
 
 fig = plt.figure()
 # fig.set_facecolor('darkkhaki')
 # fig.set_facecolor('olivedrab')
-# fig.set_facecolor('darkgreen')
 fig.set_facecolor('skyblue')
+# fig.set_facecolor('darkgreen')
 ax = fig.add_subplot(polar=True)
 ax.axis('off')
 
@@ -57,9 +59,12 @@ ax.plot(theta, r1, color="sandybrown", linewidth=4)
 ax.fill_between(theta, r1, r, where=r >= r1,
                 facecolor='gold', interpolate=True)
 
+ax.fill_between(theta, r1, r2, where=r2 < r1,
+                facecolor='orange', interpolate=True)
+
 ax.plot(theta, r2)
 ax.plot(theta, r2, color="crimson", linewidth=3)
-ax.fill_between(theta, r2, r1, where=r2 < r1,
+ax.fill_between(theta, r2, r3, where=r3 < r1,
                 facecolor='orange', interpolate=True)
 
 ax.plot(theta, r3, color="saddlebrown", linewidth=2)
